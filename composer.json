@@ -1,0 +1,22 @@
+{
+    "name": "kaikaige/yii2-wxgz",
+    "description": "自用",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "kaikaige",
+            "email": "kaikaige007@gmail.com"
+        }
+    ],
+    "require": {
+    		"yiisoft/yii2": "~2.0.0",
+    		"yiisoft/yii2-httpclient": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "kaikaige\\wxgz\\": ""
+        }
+    }
+}
