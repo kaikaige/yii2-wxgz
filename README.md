@@ -7,49 +7,39 @@ Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-Either run
+### 安装看人品
 
 ```
-php composer.phar require --prefer-dist kaikaige/yii2-wxgz "*"
+composer require "kaikaige/yii2-wxgz":"*"
 ```
 
-or add
-
+### 倒数数据表
 ```
-"kaikaige/yii2-wxgz": "*"
-```
-
-to the require section of your `composer.json` file.
-
-
-Usage
------
-
-Once the extension is installed, simply use it in your code by  :
-
-```php
-<?= \kaikaige\wxgz\AutoloadExample::widget(); ?>
+vendor/kaikaige/yii2-wxgz/wx.sql
 ```
 
-
-
-
-```php
-php yii migrate --migrationPath=@vendor/kaikaige/yii2-wxgz/migrations
+### config
+```
+'components' => [
+	...	
+	'wx' => [
+		'class' => 'kaikaige\wxgz\sdk\Wx',
+		'appid' => 'appid',
+		'secret' => 'xxxxxx',
+		'token' => 'xxxxxx',
+		'wxid' => 'xxxxxx'
+    ]
+	...
+]
 ```
 
-### 获取open_id
-```php
-/**
- * @inheritdoc
- */
-public function actions()
-{
-    return [
-	    'open-id' => [
-			'class' => 'kaikaige\wxgz\actions\OpenIdAction',
-			'callback' => 'function' //回调参数为open_id
-	    ]
-    ];
-}
+### Usage
+发送模板消息
+
+```
+$data = [
+	'first' => ['value' => '恭喜您在下单成功！'],
+];
+$v = $this->wx->getMsg()->sendTemplate('oaByzwlXzenn5Lj2NEdAeIX9XJ-A', '3tmjfdpAQvnfN1pD3Pf7CP0vX4U45ACCEDdD8BXVzOs', $data, 'http://www.baidu.com')
+
 ```
